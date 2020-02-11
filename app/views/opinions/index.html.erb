@@ -1,0 +1,32 @@
+<div class="homepage">
+  <aside class="left-menu">
+    <%= current_user.full_name %>
+    <p>Following</p>
+    <p>Followers</p>
+    <%= link_to 'Profile', user_path(current_user.id) %>
+  </aside>
+  <div class="center-menu">
+    <%= render 'shared/header' %>
+    <div class="center-wrap">
+      <div class="tweet-center">
+        <div class="title-section">
+          <div class="tweets-text">Tweets</div>
+          <div>Following</div>
+          <div>Followers</div>
+        </div>
+        <%= render 'opinions/new' %>
+        <ul>
+          <% @opinions.reverse.each do |opinion| %>
+            <li>
+              <h4><%= opinion.user.full_name %></h4>
+              <p><%= opinion.text %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <aside>
+        <p>Who to follow</p>
+      </aside>
+    </div>
+  </div>
+</div>

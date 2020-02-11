@@ -5,9 +5,8 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:session][:username])
     if @user
-      flash[:success] = 'Signed in.'
       log_in @user
-      redirect_to root_path
+      redirect_to opinions_path
     else
       redirect_to root_path
     end
