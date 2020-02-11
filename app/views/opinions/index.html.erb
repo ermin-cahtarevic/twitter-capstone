@@ -27,8 +27,6 @@
       <div class="tweet-center">
         <div class="title-section">
           <div class="tweets-text">Tweets</div>
-          <div>Following</div>
-          <div>Followers</div>
         </div>
         <%= render 'opinions/new' %>
         <ul class="tweet-list">
@@ -43,6 +41,9 @@
                 </div>
                 <div class="tweet-username">
                   @<%= opinion.user.username %>
+                </div>
+                <div class="tweet-created-at">
+                  | <%= time_ago_in_words(opinion.created_at) %> ago
                 </div>
                 <p><%= opinion.text %></p>
               </div>

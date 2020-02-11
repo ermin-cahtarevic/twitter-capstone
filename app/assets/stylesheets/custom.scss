@@ -54,14 +54,16 @@ body {
         border: 1px solid rgba(29,161,242,1.00);
         color: rgba(29,161,242,1.00);
         font-size: 16px;
-        border-radius: 15px;
+        border-radius: 10px;
         padding: 7px 15px;
       }
       .form-btn:hover {
         cursor: pointer;
+        background-color: rgb(29,161,242);
+        color: white;
       }
       #session_username {
-        height: 25px;
+        padding: 5px;
         margin: 10px 10px 0 0;
       }
     }
@@ -256,6 +258,23 @@ body {
         border-bottom: 1px solid rgb(216, 216, 216);
       }
     }
+    aside.profile-aside {
+      width: 25%;
+      border-left: 1px solid rgb(216, 216, 216);
+      .user-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: rgb(29,161,242);
+        margin: 70px auto 30px;
+      }
+      .user-fullname {
+        text-align: center;
+        margin: 10px 0 30px;
+        font-size: 18px;
+        color: black;
+      }
+    }
   } 
 }
 
@@ -312,9 +331,9 @@ body {
     display: inline-block;
     margin: 0 15px;
   }
-  .tweet-name-text {
+  .tweet-name-text,
+  .tweet-created-at {
     display: inline-block;
-    
   }
   .tweet-fullname {
     display: inline-block;
