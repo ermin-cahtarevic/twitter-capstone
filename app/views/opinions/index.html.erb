@@ -1,9 +1,25 @@
 <div class="homepage">
   <aside class="left-menu">
-    <%= current_user.full_name %>
-    <p>Following</p>
-    <p>Followers</p>
-    <%= link_to 'Profile', user_path(current_user.id) %>
+    <div class="user-img"></div>
+    <div class="user-fullname"><%= current_user.full_name %></div>
+    <div class="user-stats">
+      <div>
+        <p class="stat-num">185</p>
+        <p>Following</p>
+      </div>
+      <div>
+        <p class="stat-num">120</p>
+        <p>Followers</p>
+      </div>
+    </div>
+    <%= link_to opinions_path, class: 'left-menu-active' do %>
+      <i class="fa fa-home"></i>
+      <div class="profile-link">Home</div>
+    <% end %>
+    <%= link_to user_path(current_user.id) do %>
+      <i class="fa fa-user"></i>
+      <div class="profile-link">Profile</div>
+    <% end %>
   </aside>
   <div class="center-menu">
     <%= render 'shared/header' %>
@@ -15,11 +31,21 @@
           <div>Followers</div>
         </div>
         <%= render 'opinions/new' %>
-        <ul>
+        <ul class="tweet-list">
           <% @opinions.reverse.each do |opinion| %>
-            <li>
-              <h4><%= opinion.user.full_name %></h4>
-              <p><%= opinion.text %></p>
+            <li class="individual-tweet">
+              <div class="tweet-img-wrap">
+                <div class="tweet-img"></div>
+              </div>
+              <div class="tweet-name-text">
+                <div class="tweet-fullname">
+                  <%= link_to opinion.user.full_name, user_path(opinion.user.id) %>
+                </div>
+                <div class="tweet-username">
+                  @<%= opinion.user.username %>
+                </div>
+                <p><%= opinion.text %></p>
+              </div>
             </li>
           <% end %>
         </ul>
