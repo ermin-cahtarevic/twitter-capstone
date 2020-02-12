@@ -10,7 +10,7 @@ class OpinionsController < ApplicationController
     if @opinion.save
       redirect_to opinions_path
     else
-      render :new
+      redirect_to request.referrer
     end
   end
 
