@@ -4,12 +4,12 @@
     <div class="user-fullname"><%= current_user.full_name %></div>
     <div class="user-stats">
       <div>
-        <p class="stat-num">185</p>
+        <p class="stat-num"><%= current_user.followings.count %></p>
         <p>Following</p>
       </div>
       <div>
-        <p class="stat-num">120</p>
-        <p>Followers</p>
+        <p class="stat-num"><%= current_user.followers.count %></p>
+        <p><%= 'Follower'.pluralize(current_user.followers.count) %></p>
       </div>
     </div>
     <%= link_to opinions_path, class: 'left-menu-active' do %>
@@ -30,7 +30,7 @@
         </div>
         <%= render 'opinions/new' %>
         <ul class="tweet-list">
-          <% @opinions.reverse.each do |opinion| %>
+          <% @opinions.each do |opinion| %>
             <li class="individual-tweet">
               <div class="tweet-img-wrap">
                 <div class="tweet-img"></div>
@@ -52,7 +52,18 @@
         </ul>
       </div>
       <aside>
-        <p>Who to follow</p>
+        <p class="who-to-follow">Who to follow</p>
+        <% not_following.each do |user| %>
+          <%= link_to user_path(user.id), class: 'user-follow-link' do %>
+            <div class="user-follow">
+              <div><div class="user-follow-img"></div></div>
+              <div class="user-follow-text">
+                <div class="user-follow-fullname"><%= user.full_name %></div>
+                <div class="user-follow-username">@<%= user.username %></div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </aside>
     </div>
   </div>

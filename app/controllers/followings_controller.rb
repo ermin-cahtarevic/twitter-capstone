@@ -12,7 +12,7 @@ class FollowingsController < ApplicationController
   end
 
   def destroy
-    following = Following.find(params[:id])
+    following = Following.find_by(followed_id: params[:id], follower_id: current_user.id)
     if following.follower == current_user
       following.destroy
       flash[:success] = 'Unfollowed'
