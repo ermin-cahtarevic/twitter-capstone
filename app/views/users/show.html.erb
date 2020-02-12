@@ -55,6 +55,8 @@
       <aside class="profile-aside">
         <div class="user-img"></div>
         <div class="user-fullname"><%= @user.full_name %></div>
+        <div>@<%= @user.username %></div>
+        <%= link_to 'Follow', followings_path(@user.id), method: :post %>
       </aside>
     </div>
   </div>

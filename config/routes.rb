@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :opinions, only: [:new, :create, :index]
+
+  post 'followings/:id', to: 'followings#create', as: 'followings'
+  resources :followings, only: %i[destroy]
 end
