@@ -158,7 +158,7 @@ body {
     height: 100px;
     border-radius: 50%;
     background-color: rgb(29,161,242);
-    margin: 70px auto 30px;
+    margin: 72px auto 30px;
   }
   .user-fullname {
     text-align: center;
@@ -232,6 +232,11 @@ body {
     min-height: calc(100vh - 80px);
     .tweet-center {
       width: 75%;
+      .profile-cover-image {
+        width: 100%;
+        height: 330px;
+        background-color: rgb(98, 98, 98);
+      }
       .title-section {
         height: 73px;
         border-bottom: 1px solid rgb(216, 216, 216);
