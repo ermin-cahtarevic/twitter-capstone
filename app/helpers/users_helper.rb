@@ -1,9 +1,10 @@
 module UsersHelper
 
-  def gravatar_for(user, options = { size: 100 })
-    gravatar_id = Digest::MD5.hexdigest(user.username.downcase)
+  def avatar_for(user, options = { size: 100 })
+    first_name = user.full_name.split(' ')[0]
+    last_name = user.full_name.split(' ')[1]
     size = options[:size]
-    gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: user.full_name, class: 'gravatar')
+    avatar_url = "https://eu.ui-avatars.com/api/?name=#{first_name}+#{last_name}&size=#{size}&background=0D8ABC&color=fff"
+    image_tag(avatar_url, alt: user.full_name, class: 'avatar')
   end
 end
