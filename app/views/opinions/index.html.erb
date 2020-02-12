@@ -1,6 +1,6 @@
 <div class="homepage">
   <aside class="left-menu">
-    <div class="user-img"></div>
+    <div class="user-img"><%= gravatar_for(current_user, options = { size: 100 }) %></div>
     <div class="user-fullname"><%= current_user.full_name %></div>
     <div class="user-stats">
       <div>
@@ -30,10 +30,10 @@
         </div>
         <%= render 'opinions/new' %>
         <ul class="tweet-list">
-          <% @opinions.each do |opinion| %>
+          <% following_opinions.each do |opinion| %>
             <li class="individual-tweet">
               <div class="tweet-img-wrap">
-                <div class="tweet-img"></div>
+                <div class="tweet-img"><%= gravatar_for(opinion.user, options = { size: 50 }) %></div>
               </div>
               <div class="tweet-name-text">
                 <div class="tweet-fullname">
@@ -56,7 +56,7 @@
         <% not_following.each do |user| %>
           <%= link_to user_path(user.id), class: 'user-follow-link' do %>
             <div class="user-follow">
-              <div><div class="user-follow-img"></div></div>
+              <div class="user-follow-img"><%= gravatar_for(user, options = { size: 45 }) %></div>
               <div class="user-follow-text">
                 <div class="user-follow-fullname"><%= user.full_name %></div>
                 <div class="user-follow-username">@<%= user.username %></div>

@@ -1,12 +1,33 @@
-<div class="form-wrap">
-  <h2>Sign Up</h2>
-  <%= form_for @user, url: signup_path do |f| %>
-    <%= f.label :full_name, class: 'form-label' %>
-    <%= f.text_field :full_name, class: 'form-input' %>
-
-    <%= f.label :username, class: 'form-label' %>
-    <%= f.text_field :username, class: 'form-input' %>
-
-    <%= f.submit 'Sign up', class: 'form-btn' %>
-  <% end %>
+<div class="home-wrap">
+  <div class="left">
+    <div class="left-inner">
+      <div>
+        <i class="fa fa-search"></i>
+        Follow your interests.
+      </div>
+      <div>
+        <i class="fa fa-users"></i>
+        Hear what people are talking about.
+      </div>
+      <div>
+        <i class="fa fa-comment"></i>
+        Join the conversation.
+      </div>
+    </div>  
+  </div>
+  <div class="right right-signup">
+    <div class="form-wrap">
+      <h2>Sign Up</h2>
+      <%= form_for @user, url: signup_path do |f| %>
+        <%= f.label :full_name, class: 'form-label' %> <br>
+        <%= f.text_field :full_name, class: 'form-input' %> <br>
+    
+        <%= f.label :username, class: 'form-label' %> <br>
+        <%= f.text_field :username, class: 'form-input' %> <br>
+    
+        <%= f.submit 'Sign up', class: 'form-btn' %>
+      <% end %>
+      <%= link_to 'Login', root_path %>
+    </div>
+  </div>
 </div>

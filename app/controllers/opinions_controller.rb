@@ -16,7 +16,6 @@ class OpinionsController < ApplicationController
 
   def index
     @opinion = current_user.opinions.build if current_user
-    @opinions = Opinion.all.order(created_at: :desc)
   end
   
 
