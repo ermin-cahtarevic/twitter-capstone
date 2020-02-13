@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -33,6 +33,17 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if current_user == @user
+      @user.destroy
+      redirect_to root_path
+    else
+      flash[:danger] = "You shouldn't be doing this!"
+      redirect_to opinions_path
     end
   end
 

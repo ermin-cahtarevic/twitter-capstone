@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_destroy :remove_followings
+
   has_many :opinions, dependent: :destroy
   has_many :followings, foreign_key: :follower_id
   has_many :followers, class_name: :Following, foreign_key: :followed_id
@@ -23,5 +25,10 @@ class User < ApplicationRecord
       if cover_image.size > 5.megabytes
         errors.add(:cover_image, "should be less than 5MB")
       end
+    end
+
+    def remove_followings
+      Following.where(followed_id: id).destroy_all
+      Following.where(follower_id: id).destroy_all
     end
 end

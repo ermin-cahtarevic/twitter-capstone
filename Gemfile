@@ -16,6 +16,7 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass', '3.4.1'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '4.7.0'
+gem 'faker', '~> 2.10', '>= 2.10.1'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
