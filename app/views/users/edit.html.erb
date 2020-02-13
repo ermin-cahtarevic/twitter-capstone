@@ -22,11 +22,11 @@
       <i class="fa fa-home"></i>
       <div class="profile-link">Home</div>
     <% end %>
-    <%= link_to user_path(current_user.id), class: ('left-menu-active' if @user == current_user) do %>
+    <%= link_to user_path(current_user.id) do %>
       <i class="fa fa-user"></i>
       <div class="profile-link">Profile</div>
     <% end %>
-    <%= link_to edit_user_path(current_user.id) do %>
+    <%= link_to edit_user_path(current_user.id), class: ('left-menu-active' if @user == current_user) do %>
       <i class="fa fa-cog"></i>
       <div class="profile-link">Settings</div>
     <% end %>
@@ -34,44 +34,25 @@
   <div class="center-menu">
     <%= render 'shared/header' %>
     <div class="center-wrap">
-      <div class="tweet-center">
-        <% if @user.cover_image? %>
-          <div class="profile-cover-image">
-            <%= image_tag @user.cover_image.url %>
-          </div>
-        <% else %>
-          <div class="default-cover-image"></div>
-        <% end %>
+      <div class="tweet-center edit-page">
         <div class="title-section">
-          <div class="tweets-text">Tweets</div>
+          <div class="tweets-text">Update</div>
         </div>
-        <ul class="tweet-list">
-          <% @opinions.each do |opinion| %>
-            <li class="individual-tweet">
-              <div class="tweet-img-wrap">
-                <div class="tweet-img">
-                  <% if opinion.user.photo? %>
-                    <%= image_tag opinion.user.photo.url %>
-                  <% else %>
-                    <%= avatar_for(opinion.user, options = { size: 45 }) %>
-                  <% end %>
-                </div>
-              </div>
-              <div class="tweet-name-text">
-                <div class="tweet-fullname">
-                  <%= opinion.user.full_name %>
-                </div>
-                <div class="tweet-username">
-                  @<%= opinion.user.username %>
-                </div>
-                <div class="tweet-created-at">
-                  | <%= time_ago_in_words(opinion.created_at) %> ago
-                </div>
-                <p><%= opinion.text %></p>
-              </div>
-            </li>
-          <% end %>
-        </ul>
+        <%= form_for @user, url: "/users/#{params[:id]}" do |f| %>
+          <%= f.label :full_name, class: 'form-label' %> <br>
+          <%= f.text_field :full_name, class: 'form-input' %> <br>
+      
+          <%= f.label :username, class: 'form-label' %> <br>
+          <%= f.text_field :username, class: 'form-input' %> <br>
+
+          <%= f.label :photo, class: 'form-label' %> <br>
+          <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png', class: 'user-photo' %> 
+
+          <%= f.label :cover_image, class: 'form-label' %> <br>
+          <%= f.file_field :cover_image, accept: 'image/jpeg,image/gif,image/png', class: 'user-photo' %> <br>
+      
+          <%= f.submit 'Update', class: 'form-btn' %>
+        <% end %>
       </div>
       <aside class="profile-aside">
         <div class="profile-img-link">
@@ -105,34 +86,6 @@
             <p class="stat-num"><%= @user.followers.count %></p>
             <p class="stat-text"><%= 'Follower'.pluralize(@user.followers.count) %></p class="stat-text">
           </div>
-        </div>
-        <div class="followed-by">
-          <h2>Followed by</h2>
-          <% followed_by(@user).each do |user| %>
-            <div class="followed-by-wrap">
-              <div>
-                <div class="followed-by-img">
-                  <% if user.photo? %>
-                    <%= image_tag user.photo.url %>
-                  <% else %>
-                    <%= avatar_for(user, options = { size: 40 }) %>
-                  <% end %>
-                </div>
-                <div><%= user.full_name %></div>
-              </div>
-              <% unless current_user == user %>
-                <% if following?(user) %>
-                  <%= link_to following_path(user.id), method: :delete, class: 'follow-user followed-by-list' do %>
-                    <div>×</div>
-                  <% end %>
-                <% else %>
-                  <%= link_to followings_path(user.id), method: :post, class: 'follow-user followed-by-list' do %>
-                    <div>+</div>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
         </div>
       </aside>
     </div>
