@@ -32,7 +32,7 @@
     <div class="center-wrap">
       <div class="tweet-center">
         <div class="profile-cover-image">
-          <%= image_tag('http://myfbcovers.com/uploads/somecovers/download/Facebook%20cover%20Cover%20is%20loading%20%20.jpg', alt: 'cover', class: 'cover') %>
+          <%= image_tag @user.cover_image.url if @user.cover_image? %>
         </div>
         <div class="title-section">
           <div class="tweets-text">Tweets</div>
@@ -41,7 +41,13 @@
           <% @opinions.each do |opinion| %>
             <li class="individual-tweet">
               <div class="tweet-img-wrap">
-                <div class="tweet-img"><%= avatar_for(opinion.user, options = { size: 50 }) %></div>
+                <div class="tweet-img">
+                  <% if opinion.user.photo? %>
+                    <%= image_tag opinion.user.photo.url %>
+                  <% else %>
+                    <%= avatar_for(opinion.user, options = { size: 45 }) %>
+                  <% end %>
+                </div>
               </div>
               <div class="tweet-name-text">
                 <div class="tweet-fullname">
@@ -61,7 +67,13 @@
       </div>
       <aside class="profile-aside">
         <div class="profile-img-link">
-          <div class="user-img"><%= avatar_for(@user, options = { size: 100 }) %></div>
+          <div class="user-img">
+            <% if @user.photo? %>
+              <%= image_tag @user.photo.url %>
+            <% else %>
+              <%= avatar_for(@user, options = { size: 100 }) %>
+            <% end %>
+          </div>
           <% unless current_user == @user %>
             <% if following?(@user) %>
               <%= link_to 'Unfollow', following_path(@user.id), method: :delete, class: 'follow-user' %>
@@ -91,7 +103,13 @@
           <% followed_by(@user).each do |user| %>
             <div class="followed-by-wrap">
               <div>
-                <div class="followed-by-img"><%= avatar_for(user, options = { size: 40 }) %></div>
+                <div class="followed-by-img">
+                  <% if user.photo? %>
+                    <%= image_tag user.photo.url %>
+                  <% else %>
+                    <%= avatar_for(user, options = { size: 40 }) %>
+                  <% end %>
+                </div>
                 <div><%= user.full_name %></div>
               </div>
               <% unless current_user == user %>

@@ -8,6 +8,7 @@ class User < ApplicationRecord
   validate :photo_size
 
   mount_uploader :photo, PhotoUploader
+  mount_uploader :cover_image, CoverImageUploader
 
   private
 

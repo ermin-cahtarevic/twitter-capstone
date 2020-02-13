@@ -26,6 +26,8 @@
         <%= f.text_field :username, class: 'form-input' %> <br>
 
         <%= f.file_field :photo, accept: 'image/jpeg,image/gif,image/png' %> <br>
+
+        <%= f.file_field :cover_image, accept: 'image/jpeg,image/gif,image/png' %> <br>
     
         <%= f.submit 'Sign up', class: 'form-btn' %>
       <% end %>
