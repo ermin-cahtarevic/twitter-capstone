@@ -10,8 +10,8 @@
  - Users can create opinions/tweets
  - Users can follow other users
  - Users can add a profile photo and a profile cover image
-  - They can upload the images while signing up 
-  - Or, later on through the settings page
+   - They can upload the images while signing up 
+   - Or, later on through the settings page
  - The discover page shows the most recent opinions/tweets from users that are not followed by the logged in user
 
  - The app is an MVP of the full product - with the full graphical design, but only basic features that can be extended in the future.
@@ -60,6 +60,5 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - [Microverse](https://www.microverse.org/)
-- [The Odin Project](https://www.theodinproject.com/)
 - [UI Avatars](https://eu.ui-avatars.com/)
 - [Gregoire Vella](https://www.behance.net/gregoirevella)
