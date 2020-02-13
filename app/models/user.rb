@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :opinions, dependent: :destroy
   has_many :followings, foreign_key: :follower_id
   has_many :followers, class_name: :Following, foreign_key: :followed_id
-  
+
   validates :username, uniqueness: true, presence: true
   validates :full_name, presence: true
   validate :photo_size
@@ -15,20 +15,16 @@ class User < ApplicationRecord
 
   private
 
-    def photo_size
-      if photo.size > 5.megabytes
-        errors.add(:photo, "should be less than 5MB")
-      end
-    end
+  def photo_size
+    errors.add(:photo, 'should be less than 5MB') if photo.size > 5.megabytes
+  end
 
-    def cover_size
-      if cover_image.size > 5.megabytes
-        errors.add(:cover_image, "should be less than 5MB")
-      end
-    end
+  def cover_size
+    errors.add(:cover_image, 'should be less than 5MB') if cover_image.size > 5.megabytes
+  end
 
-    def remove_followings
-      Following.where(followed_id: id).destroy_all
-      Following.where(follower_id: id).destroy_all
-    end
+  def remove_followings
+    Following.where(followed_id: id).destroy_all
+    Following.where(follower_id: id).destroy_all
+  end
 end

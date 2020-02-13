@@ -17,7 +17,6 @@ RSpec.describe Following, type: :model do
   end
 
   context 'Association tests' do
-
     it 'belongs to follower' do
       assc = Following.reflect_on_association(:follower)
       expect(assc.macro).to eq :belongs_to

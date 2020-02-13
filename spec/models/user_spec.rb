@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   context 'Validation tests' do
     it 'validates full name and username - invalid' do
       user = User.new(full_name: '', username: '')

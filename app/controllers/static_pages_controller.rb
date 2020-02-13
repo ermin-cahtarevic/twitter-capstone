@@ -6,8 +6,6 @@ class StaticPagesController < ApplicationController
   private
 
   def logout
-    if logged_in?
-      redirect_to opinions_path
-    end
+    redirect_to opinions_path if logged_in?
   end
 end

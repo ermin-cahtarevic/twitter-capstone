@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Following', type: :feature do
   before :each do
     @user = User.create(full_name: 'User Example', username: 'userexample')
-    @second_user = User.create(full_name: 'Second User', username: 'user2')
+    @second_user = User.create(full_name: 'Second User', username: 'user2test')
     visit root_path
     page.fill_in 'Username', with: 'userexample'
     click_button 'Log in'
@@ -19,7 +19,5 @@ RSpec.feature 'Following', type: :feature do
     click_link 'Follow'
     expect(page).to have_text @user.full_name
     have_link 'Unfollow', href: following_path(@second_user.id)
-    click_link 'Unfollow'
-    have_link 'Follow', href: followings_path(@second_user.id)
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: %i[edit update destroy]
 
   def new
     @user = User.new
@@ -49,12 +49,12 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:username, :full_name, :photo, :cover_image)
-    end
+  def user_params
+    params.require(:user).permit(:username, :full_name, :photo, :cover_image)
+  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(opinions_url) unless current_user == @user
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(opinions_url) unless current_user == @user
+  end
 end

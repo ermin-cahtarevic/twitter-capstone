@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Opinion, type: :model do
-
   context 'Validation tests' do
     subject { Opinion.new }
     let(:create_opinion) { User.new(full_name: 'Test User', username: 'testuser') }
