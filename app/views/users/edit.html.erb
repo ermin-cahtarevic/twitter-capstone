@@ -57,7 +57,7 @@
       
           <%= f.submit 'Update', class: 'form-btn' %>
         <% end %>
-        <%= link_to 'Delete account', "/users/#{@user.id}", method: :delete, data: { confirm: "You sure?" } %>
+        <%= link_to 'Delete account', "/users/#{@user.id}", method: :delete, data: { confirm: "You sure?" }, class: 'delete-btn' %>
       </div>
       <aside class="profile-aside">
         <div class="profile-img-link">
