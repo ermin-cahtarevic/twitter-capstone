@@ -205,8 +205,8 @@ body {
   background-color: rgb(15, 41, 58);
   color: white;
   .user-img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     margin: 72px auto 30px;
   }
   .user-img > img{
@@ -542,5 +542,15 @@ body {
   }
   .tweet-username {
     display: inline-block;
+  }
+}
+
+/* user photo */
+
+.user-img-photo {
+  img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
   }
 }

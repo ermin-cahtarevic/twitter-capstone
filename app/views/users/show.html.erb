@@ -1,6 +1,12 @@
 <div class="homepage">
   <aside class="left-menu">
-    <div class="user-img"><%= avatar_for(current_user) %></div>
+    <div class="user-img user-img-photo">
+      <% if current_user.photo? %>
+        <%= image_tag current_user.photo.url %>
+      <% else %>
+        <%= avatar_for(current_user, options = { size: 120 }) %>
+      <% end %>
+    </div>
     <div class="user-fullname"><%= current_user.full_name %></div>
     <div class="user-stats">
       <div>
