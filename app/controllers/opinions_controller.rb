@@ -17,6 +17,11 @@ class OpinionsController < ApplicationController
   def index
     @opinion = current_user.opinions.build if current_user
   end
+
+  def discover
+    users = current_user.followings.map { |f| f.followed }
+    @not_followed = User.where("id NOT IN (?)", users).order(created_at: :desc).limit(10)
+  end
   
 
   private

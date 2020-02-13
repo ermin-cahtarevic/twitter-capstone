@@ -26,6 +26,10 @@
       <i class="fa fa-user"></i>
       <div class="profile-link">Profile</div>
     <% end %>
+    <%= link_to discover_path do %>
+      <i class="fa fa-hashtag"></i>
+      <div class="profile-link">Discover</div>
+    <% end %>
     <%= link_to edit_user_path(current_user.id) do %>
       <i class="fa fa-cog"></i>
       <div class="profile-link">Settings</div>

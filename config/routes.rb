@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  get '/discover', to: 'opinions#discover', as: 'discover'
   resources :opinions, only: [:new, :create, :index]
 
   post 'followings/:id', to: 'followings#create', as: 'followings'

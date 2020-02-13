@@ -613,3 +613,44 @@ body {
     }
   }
 }
+
+/* discover page */
+
+.discover-tweet-list {
+  padding: 30px ;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+} 
+
+.discover-tweet {
+  width: 45%;
+  border: 1px solid rgb(231, 231, 231);
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 15px;
+  .discover-user-link {
+    text-decoration: none;
+    color: rgb(41, 41, 41);
+  }
+  .discover-user-link:hover {
+    .name {
+      color: rgb(29,161,242);
+    }
+  }
+  .discover-tweet-top {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    padding-bottom: 13px;
+    .photo {
+      margin-right: 8px;
+    }
+    .name {
+      margin-right: 5px;
+    }
+    .time {
+      float: right;
+    }
+  }
+}

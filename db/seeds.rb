@@ -6,8 +6,8 @@ User.create!(full_name:  "Example User", username: 'exampleuser')
   User.create!(full_name: full_name, username: username)
 end
 
-users = User.order(:created_at).take(6)
-50.times do
+users = User.order(:created_at)
+3.times do
   text = Faker::Quote.matz
   users.each { |user| user.opinions.create!(text: text) }
 end

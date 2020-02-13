@@ -18,7 +18,7 @@
         <p><%= 'Follower'.pluralize(current_user.followers.count) %></p>
       </div>
     </div>
-    <%= link_to opinions_path, class: 'left-menu-active' do %>
+    <%= link_to opinions_path do %>
       <i class="fa fa-home"></i>
       <div class="profile-link">Home</div>
     <% end %>
@@ -26,7 +26,7 @@
       <i class="fa fa-user"></i>
       <div class="profile-link">Profile</div>
     <% end %>
-    <%= link_to discover_path do %>
+    <%= link_to discover_path, class: 'left-menu-active' do %>
       <i class="fa fa-hashtag"></i>
       <div class="profile-link">Discover</div>
     <% end %>
@@ -40,36 +40,30 @@
     <div class="center-wrap">
       <div class="tweet-center">
         <div class="title-section">
-          <div class="tweets-text">Tweets</div>
+          <div class="tweets-text">Discover</div>
         </div>
-        <%= render 'opinions/new' %>
-        <ul class="tweet-list">
-          <% following_opinions.each do |opinion| %>
-            <li class="individual-tweet">
-              <div class="tweet-img-wrap">
-                <div class="tweet-img">
-                  <% if opinion.user.photo? %>
-                    <%= image_tag opinion.user.photo.url %>
-                  <% else %>
-                    <%= avatar_for(opinion.user, options = { size: 50 }) %>
-                  <% end %>
-                </div>
+        <div class="discover-tweet-list">
+          <% @not_followed.each do |user| %>
+            <% user.opinions.each do |opinion| %>
+              <div class="discover-tweet">
+                <%= link_to user_path(user.id), class: 'discover-user-link' do %>
+                  <div class="discover-tweet-top">
+                    <div class="photo">
+                      <% if user.photo? %>
+                        <%= image_tag user.photo.url %>
+                      <% else %>
+                        <%= avatar_for(user, options = { size: 45 }) %>
+                      <% end %>
+                    </div>
+                    <div class="name"><%= user.full_name %> </div> 
+                    <div class="time"> | <%= time_ago_in_words(opinion.created_at) %></div>
+                  </div>
+                <% end %>
+                <div><%= opinion.text %></div>
               </div>
-              <div class="tweet-name-text">
-                <div class="tweet-fullname">
-                  <%= link_to opinion.user.full_name, user_path(opinion.user.id) %>
-                </div>
-                <div class="tweet-username">
-                  @<%= opinion.user.username %>
-                </div>
-                <div class="tweet-created-at">
-                  | <%= time_ago_in_words(opinion.created_at) %> ago
-                </div>
-                <p><%= opinion.text %></p>
-              </div>
-            </li>
+            <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
       <aside>
         <p class="who-to-follow">Who to follow</p>
