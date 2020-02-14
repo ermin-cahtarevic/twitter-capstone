@@ -20,6 +20,7 @@ class OpinionsController < ApplicationController
 
   def discover
     users = current_user.followings.map(&:followed)
+    users << current_user
     return @not_followed = User.all.limit(10) if users.empty?
 
     @not_followed = User.where('id NOT IN (?)', users).order(created_at: :desc).limit(10)
