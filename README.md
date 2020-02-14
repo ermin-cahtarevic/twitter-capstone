@@ -21,8 +21,10 @@
 
  Design: [Twitter Redesign](https://www.behance.net/gallery/14286087/Twitter-Redesign-of-UI-details), by [Gregoire Vella](https://www.behance.net/gregoirevella)
 
-
+ ## Home page
  ![Homepage](/screenshots/twitter-homepage.png?raw=true "Homepage")
+
+ ## Profile page
  ![Profile page](/screenshots/twitter-profile.png?raw=true "Profile page")
 
 ## Built With
