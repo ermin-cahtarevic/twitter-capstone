@@ -2,6 +2,7 @@ class CoverImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  process resize_to_limit: [1400, 400]
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.production?

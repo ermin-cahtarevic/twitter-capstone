@@ -1,17 +1,17 @@
 example_id                                        | status | run_time        |
 ------------------------------------------------- | ------ | --------------- |
-./spec/authentication/authentication_spec.rb[1:1] | passed | 0.05212 seconds |
-./spec/integration/create_opinion_spec.rb[1:1]    | passed | 0.06418 seconds |
-./spec/integration/following_users_spec.rb[1:1]   | passed | 0.4494 seconds  |
-./spec/models/following_spec.rb[1:1]              | passed | 0.00864 seconds |
-./spec/models/following_spec.rb[1:2]              | passed | 0.00702 seconds |
-./spec/models/following_spec.rb[1:3:1]            | passed | 0.00623 seconds |
-./spec/models/following_spec.rb[1:3:2]            | passed | 0.00738 seconds |
-./spec/models/opinions_spec.rb[1:1:1]             | passed | 0.00125 seconds |
-./spec/models/opinions_spec.rb[1:1:2]             | passed | 0.00213 seconds |
-./spec/models/opinions_spec.rb[1:2:1]             | passed | 0.00092 seconds |
-./spec/models/user_spec.rb[1:1:1]                 | passed | 0.00696 seconds |
-./spec/models/user_spec.rb[1:1:2]                 | passed | 0.00217 seconds |
-./spec/models/user_spec.rb[1:2:1]                 | passed | 0.0008 seconds  |
-./spec/models/user_spec.rb[1:2:2]                 | passed | 0.00081 seconds |
-./spec/models/user_spec.rb[1:2:3]                 | passed | 0.00084 seconds |
+./spec/authentication/authentication_spec.rb[1:1] | passed | 0.04666 seconds |
+./spec/integration/create_opinion_spec.rb[1:1]    | passed | 5.16 seconds    |
+./spec/integration/following_users_spec.rb[1:1]   | passed | 0.06923 seconds |
+./spec/models/following_spec.rb[1:1]              | passed | 0.01141 seconds |
+./spec/models/following_spec.rb[1:2]              | passed | 0.00719 seconds |
+./spec/models/following_spec.rb[1:3:1]            | passed | 0.00552 seconds |
+./spec/models/following_spec.rb[1:3:2]            | passed | 0.00623 seconds |
+./spec/models/opinions_spec.rb[1:1:1]             | passed | 0.00104 seconds |
+./spec/models/opinions_spec.rb[1:1:2]             | passed | 0.00149 seconds |
+./spec/models/opinions_spec.rb[1:2:1]             | passed | 0.00064 seconds |
+./spec/models/user_spec.rb[1:1:1]                 | passed | 0.00223 seconds |
+./spec/models/user_spec.rb[1:1:2]                 | passed | 0.00234 seconds |
+./spec/models/user_spec.rb[1:2:1]                 | passed | 0.00052 seconds |
+./spec/models/user_spec.rb[1:2:2]                 | passed | 0.00043 seconds |
+./spec/models/user_spec.rb[1:2:3]                 | passed | 0.00059 seconds |

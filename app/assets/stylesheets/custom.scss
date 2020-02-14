@@ -669,6 +669,10 @@ body {
     padding-bottom: 13px;
     .photo {
       margin-right: 8px;
+      img {
+        width: 45px;
+        height: 45px;
+      }
     }
     .name {
       margin-right: 5px;

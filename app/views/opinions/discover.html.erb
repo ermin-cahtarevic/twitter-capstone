@@ -1,40 +1,7 @@
+<% provide(:active_class_discover, 'left-menu-active') %>
+
 <div class="homepage">
-  <aside class="left-menu">
-    <div class="user-img">
-      <% if current_user.photo? %>
-        <%= image_tag current_user.photo.url %>
-      <% else %>
-        <%= avatar_for(current_user, options = { size: 120 }) %>
-      <% end %>
-    </div>
-    <div class="user-fullname"><%= current_user.full_name %></div>
-    <div class="user-stats">
-      <div>
-        <p class="stat-num"><%= current_user.followings.count %></p>
-        <p>Following</p>
-      </div>
-      <div>
-        <p class="stat-num"><%= current_user.followers.count %></p>
-        <p><%= 'Follower'.pluralize(current_user.followers.count) %></p>
-      </div>
-    </div>
-    <%= link_to opinions_path do %>
-      <i class="fa fa-home"></i>
-      <div class="profile-link">Home</div>
-    <% end %>
-    <%= link_to user_path(current_user.id) do %>
-      <i class="fa fa-user"></i>
-      <div class="profile-link">Profile</div>
-    <% end %>
-    <%= link_to discover_path, class: 'left-menu-active' do %>
-      <i class="fa fa-hashtag"></i>
-      <div class="profile-link">Discover</div>
-    <% end %>
-    <%= link_to edit_user_path(current_user.id) do %>
-      <i class="fa fa-cog"></i>
-      <div class="profile-link">Settings</div>
-    <% end %>
-  </aside>
+  <%= render 'left_menu' %>
   <div class="center-menu">
     <%= render 'shared/header' %>
     <div class="center-wrap">
@@ -65,26 +32,7 @@
           <% end %>
         </div>
       </div>
-      <aside>
-        <p class="who-to-follow">Who to follow</p>
-        <% not_following.each do |user| %>
-          <%= link_to user_path(user.id), class: 'user-follow-link' do %>
-            <div class="user-follow">
-              <div class="user-follow-img">
-                <% if user.photo? %>
-                  <%= image_tag user.photo.url %>
-                <% else %>
-                  <%= avatar_for(user, options = { size: 45 }) %>
-                <% end %>
-              </div>
-              <div class="user-follow-text">
-                <div class="user-follow-fullname"><%= user.full_name %></div>
-                <div class="user-follow-username">@<%= user.username %></div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </aside>
+      <%= render 'who_to_follow' %>
     </div>
   </div>
 </div>
