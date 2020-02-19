@@ -13,6 +13,11 @@ class User < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   mount_uploader :cover_image, CoverImageUploader
 
+  scope :not_following_opinions, ->(user) { includes(:opinions).where("id NOT IN (?)", (user.followings.map(&:followed_id) << user.id)).limit(10).order(created_at: :desc) }
+  scope :not_following_users, ->(user) { where("id NOT IN (?)", (user.followings.map(&:followed_id) << user.id)).limit(10).order(created_at: :desc) }
+  scope :following, ->(user) { where('id IN (?)', (user.followings.map(&:followed_id))) }
+  scope :followers, ->(user) { where('id IN (?)', (user.followers.map(&:follower_id))).limit(5) }
+
   private
 
   def photo_size

@@ -1,6 +1,6 @@
 <aside>
   <p class="who-to-follow">Who to follow</p>
-  <% not_following.each do |user| %>
+  <% not_following_users.each do |user| %>
     <%= link_to user_path(user.id), class: 'user-follow-link' do %>
       <div class="user-follow">
         <div class="user-follow-img">

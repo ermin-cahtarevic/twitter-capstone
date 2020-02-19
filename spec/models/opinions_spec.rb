@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 
 RSpec.describe Opinion, type: :model do
   context 'Validation tests' do

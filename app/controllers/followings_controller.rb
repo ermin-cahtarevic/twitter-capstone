@@ -1,7 +1,6 @@
 class FollowingsController < ApplicationController
   def create
-    user = User.find(params[:id])
-    following = current_user.followings.new(followed_id: user.id)
+    following = current_user.followings.new(followed_id: params[:id])
     flash[:danger] = 'Failed!' unless following.save
     redirect_to request.referrer
   end

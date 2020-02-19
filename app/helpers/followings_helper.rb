@@ -1,15 +1,13 @@
 module FollowingsHelper
-  def not_following
-    users = current_user.followings.map(&:followed)
-    users << current_user
-    User.where('id NOT IN (?)', users).order(created_at: :desc).limit(10)
+  def not_following_users
+    @users = User.not_following_users(current_user)
   end
 
   def following?(user)
-    current_user.followings.map(&:followed).include?(user)
+    !Following.where(follower_id: current_user.id, followed_id: user.id).empty?
   end
 
   def followed_by(user)
-    user.followers.map(&:follower).last(5)
+    User.followers(user)
   end
 end

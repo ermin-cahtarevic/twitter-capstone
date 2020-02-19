@@ -3,15 +3,17 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
-  get '/user/:id', to: 'users#show', as: 'user'
-  resources :users, only: %i[edit update destroy]
+  resources :users, only: %i[show edit update destroy] do
+    member do
+      post 'followings', to: 'followings#create'
+    end
+  end
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
   get '/discover', to: 'opinions#discover', as: 'discover'
-  resources :opinions, only: [:new, :create, :index]
+  resources :opinions, only: %i[new create index]
 
-  post 'followings/:id', to: 'followings#create', as: 'followings'
   resources :followings, only: %i[destroy]
 end

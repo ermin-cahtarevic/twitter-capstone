@@ -1,4 +1,4 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 
 RSpec.feature 'Following', type: :feature do
   before :each do
@@ -15,7 +15,7 @@ RSpec.feature 'Following', type: :feature do
     expect(page.current_path).to eq user_path(@second_user.id)
     expect(page).to have_text 'Second User'
     expect(page).to have_text '@user2'
-    have_link 'Follow', href: followings_path(@second_user.id)
+    have_link 'Follow', href: followings_user_path(@second_user.id)
     click_link 'Follow'
     expect(page).to have_text @user.full_name
     have_link 'Unfollow', href: following_path(@second_user.id)

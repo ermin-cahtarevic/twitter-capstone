@@ -6,7 +6,7 @@ class OpinionsController < ApplicationController
   end
 
   def create
-    @opinion = current_user.opinions.create(opinion_params)
+    @opinion = current_user.opinions.new(opinion_params)
     if @opinion.save
       redirect_to opinions_path
     else
@@ -19,11 +19,7 @@ class OpinionsController < ApplicationController
   end
 
   def discover
-    users = current_user.followings.map(&:followed)
-    users << current_user
-    return @not_followed = User.all.limit(10) if users.empty?
-
-    @not_followed = User.where('id NOT IN (?)', users).order(created_at: :desc).limit(10)
+    @not_followed = User.not_following_opinions(current_user)
   end
 
   private
