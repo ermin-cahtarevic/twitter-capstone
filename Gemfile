@@ -15,7 +15,7 @@ gem 'carrierwave', '1.2.2'
 gem 'faker', '~> 2.10', '>= 2.10.1'
 gem 'font-awesome-rails'
 gem 'jquery-rails', '4.3.1'
-gem 'mini_magick', '4.7.0'
+gem 'mini_magick', '4.9.4'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
