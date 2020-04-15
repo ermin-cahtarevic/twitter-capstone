@@ -41,6 +41,25 @@
   - gem 'carrierwave'
   - gem 'faker'
 
+
+## Usage
+
+Clone the repository to your machine and cd into the directory
+
+````
+$ git clone git@github.com:ermin-cahtarevic/twitter-capstone.git
+$ cd twitter-capstone
+````
+Use the following command to start the rails server then visit: http://localhost:3000 to use the app
+````
+$ rails s
+````
+Run RSpec tests
+
+````
+$ rspec
+````
+
 ## Authors
 
 👤 **Ermin Cahtarevic**
